@@ -1,0 +1,435 @@
+:root {
+    --button-default: #816cff;
+    --button-hover: #84cfd0;
+    --button-focus: #fff;
+    --white: #fff;
+    --turquoise: #84cfd0;
+    --dark: #000235;
+    --purple: #816cff;
+    --gray: #808080;
+    --light-gray: #d9d9d9;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Outfit", sans-serif;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--dark);
+}
+/* Clearfix Child Elements */
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0px;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+    clear: both;
+}
+/* Hide From IE/Mac */
+.clearfix {
+    display: block;
+    clear: both;
+}
+a {
+    text-decoration: none;
+}
+h1, h2 {
+    font-weight: 700;
+}
+h3 {
+    font-weight: 600;
+}
+.text-turquoise {
+    color: var(--turquoise);
+}
+.text-white {
+    color: var(--white);
+}
+.text-gray {
+    color: var(--gray);
+}
+.text-dark {
+    color: var(--dark);
+}
+.text-purple {
+    color: var(--purple);
+}
+.text {
+    line-height: 140%;
+}
+.text.larger {
+    font-size: 18px;
+}
+.container {
+    position: relative;
+}
+.welcome-bg {
+    position: absolute;
+    bottom: 0;
+}
+.heading :is(.title, .subtitle), .title {
+    margin-bottom: 0;
+    font-weight: 700;
+    line-height: 120%;
+}
+h1.title, .h1.title {
+    font-size: 48px;
+}
+h2.title {
+    font-size: 32px;
+}
+h3.title, .subtitle {
+    font-size: 20px;
+}
+.button {
+    background: var(--button-default);
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background 0.3s ease-out;
+    cursor: pointer;
+}
+.button:hover {
+    background: var(--button-hover);
+}
+.button :is(:focus, :visited) {
+    background: var(--button-focus);
+}
+.button-text {
+    color: var(--dark);
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+}
+.button-text.larger {
+    font-size: 20px;
+}
+.service-section {
+    padding-bottom: 100px;
+}
+.service-heading {
+    background: var(--turquoise);
+    border-radius: 6px;
+    padding: 25px 15px 25px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-basis: 25%;
+}
+.services {
+    color: var(--purple);
+    text-align: left;
+    font-size: var(--var-sds-typography-subheading-size-medium, 20px);
+    line-height: 120%;
+    font-weight: 700;
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: auto;
+    flex-basis: 75%;
+}
+.service-boxes {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: auto;
+    flex-grow: 1;
+    flex-basis: 75%;
+}
+.service-box {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 25px 15px 40px 15px;
+    box-shadow: 0px 15px 34px -8px rgba(0, 0, 0, 0.10);
+}
+.lawyer-icon {
+    border-radius: 6px;
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    position: relative;
+}
+.ellipse {
+    background: var(--light-gray);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+    left: 0%;
+    bottom: 0%;
+    top: 0%;
+}
+.icon {
+    width: 35px;
+    height: 54.69%;
+    position: absolute;
+    left: calc(50% - 17px);
+    bottom: 21.88%;
+    top: 23.44%;
+    overflow: visible;
+}
+.service-button-default {
+    background: var(--purple);
+    border-radius: 20px;
+    opacity: 0;
+    padding: 12.63px;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: calc(50% - 20px);
+    bottom: -80px;
+    transform-origin: 0 0;
+    transition: bottom 0.3s ease-out, opacity 0.5s ease-out;
+}
+.service-box:hover .service-button-default {
+    bottom: calc(40px / -2);
+    opacity: 1;
+}
+.icon {
+    width: 35px;
+    height: 54.69%;
+    position: absolute;
+    left: calc(50% - 17px);
+    bottom: 21.88%;
+    top: 23.44%;
+    overflow: visible;
+}
+.about-section {
+    padding-bottom: 100px;
+}
+.about-content {
+    padding: clamp(30px, 10vw, 60px);
+}
+.about-tabs ul button {
+    background: var(--light-gray) !important;
+    color: var(--dark) !important;
+    border-radius: 6px 6px 0px 0px !important;
+}
+.about-tabs ul button:is(:hover, .active) {
+    background: var(--purple) !important;
+}
+.tab-about-content {
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+}
+.tab-about-content .tab-pane.active {
+    background: var(--purple) !important;
+}
+.ribbon {
+    width: 277px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    bottom: 30px;
+}
+.ribbon-text {
+    font-size: 16px;
+    font-weight: 600;
+    z-index: 1;
+}
+.ribbon-vector {
+    width: 26px;
+    height: 60px;
+    position: absolute;
+    left: 242px;
+    top: 5px;
+    overflow: visible;
+}
+.rectangle {
+    background: var(--turquoise);
+    padding: 20px 30px 20px 30px;
+    width: 247px;
+    height: 60px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.case-section {
+    padding-bottom: 100px;
+}
+.card-img-overlay {
+    background-color: transparent;
+    left: 50%;
+    top: 50%;
+    width: 95%;
+    height: 93%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: background 0.6s ease-out, opacity 0.2s ease-in;
+}
+.card:hover .card-img-overlay {
+    background: #84cfd0ad;
+    opacity: 1;
+}
+.attorney-section {
+    padding-bottom: 100px;
+}
+.card-container {
+    perspective: 1000px;
+}
+.card-flip {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    transform-style: preserve-3d;
+    transform: rotateY(0);
+    transition: transform 0.6s;
+}
+.card-flip:hover {
+    transform: rotateY(180deg);
+}
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+}
+.card-front {
+    background-color: var(--turquoise);
+    align-items: start;
+    color: var(--dark);
+}
+.card-back {
+    background-color: var(--dark);
+    color: var(--white);
+    transform: rotateY(180deg);
+}
+.staff .photo {
+    width: 50px;
+    height: 50px;
+}
+@media screen and (max-width: 480px) {
+    .card-container {
+        perspective: 800px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (min-width: 1200px) {
+    .card-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.form-section {
+    padding-bottom: 100px;
+}
+.form-img img {
+    max-height: 625px;
+    object-fit: cover;
+}
+.form-box {
+    background: var(--dark);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+.dots-vector {
+    opacity: 0.5;
+    flex-shrink: 0;
+    width: 183.86px;
+    height: 176.35px;
+    position: absolute;
+    right: -138.86px;
+    bottom: -131.23px;
+    transform: translate(-183.86px, -176.35px);
+    overflow: visible;
+}
+.input, .textbox {
+    background: var(--white);
+    width: 100%;
+    border-radius: 6px;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 2px;
+    padding: 10px;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.10);
+    transition: background 0.2s ease-out, border 0.5s ease-out;
+}
+.input {
+    height: 40px;
+}
+:is(input, textarea)::placeholder {
+    opacity: 0;
+}
+.label {
+    left: 10px;
+    transition: top 0.1s ease-out, color 0.3s ease-out;
+    pointer-events: none;
+}
+.label span {
+    background-color: transparent;
+    padding: 0 5px;
+}
+.form-message .label {
+    top: 20px;
+}
+:is(input, textarea):is(:focus, :active), :is(input, textarea):not(:placeholder-shown) {
+    background-color: var(--dark);
+    border-color: var(--turquoise);
+    color: var(--white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--white);
+}
+:is(input, textarea):is(:focus, :active) ~ label, :is(input, textarea):not(:placeholder-shown) ~ label {
+    top: 0 !important;
+    font-size: 12px;
+    color: var(--turquoise);
+}
+:is(input, textarea):is(:focus, :active) ~ label span, :is(input, textarea):not(:placeholder-shown) ~ label span {
+    background-color: var(--dark);
+}
+@media screen and (min-width: 992px) {
+    .form-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (min-width: 1024px) {
+    .input, .textbox {
+        width: 75%;
+    }
+}
+.testimonial-section {
+    padding-bottom: 100px;
+}
+.testimonial {
+    background-color: var(--white);
+    /*width: 350px;*/
+    height: 300px;
+    border-style: solid;
+    border-color: rgba(128, 128, 128, 0.05);
+    border-width: 1px;
+    box-shadow: 0px 15px 34px -8px rgba(0, 0, 0, 0.10);
+}
+.testimonial-item {
+    background-color: var(--white);
+}
