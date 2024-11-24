@@ -1,3 +1,7 @@
+/*========================================
+ General
+========================================*/
+
 :root {
     --button-default: #816cff;
     --button-hover: #84cfd0;
@@ -43,6 +47,11 @@ body {
     display: block;
     clear: both;
 }
+
+/*========================================
+ Content
+========================================*/
+
 a {
     text-decoration: none;
 }
@@ -116,6 +125,11 @@ h3.title, .subtitle {
 .button-text.larger {
     font-size: 20px;
 }
+
+/*========================================
+ Services Section
+========================================*/
+
 .service-section {
     padding-bottom: 100px;
 }
@@ -201,15 +215,11 @@ h3.title, .subtitle {
     bottom: calc(40px / -2);
     opacity: 1;
 }
-.icon {
-    width: 35px;
-    height: 54.69%;
-    position: absolute;
-    left: calc(50% - 17px);
-    bottom: 21.88%;
-    top: 23.44%;
-    overflow: visible;
-}
+
+/*========================================
+ About Section
+========================================*/
+
 .about-section {
     padding-bottom: 100px;
 }
@@ -260,8 +270,16 @@ h3.title, .subtitle {
     left: 0px;
     top: 0px;
 }
+
+/*========================================
+ Case Section
+========================================*/
+
 .case-section {
     padding-bottom: 100px;
+}
+.card-img img {
+    
 }
 .card-img-overlay {
     background-color: transparent;
@@ -277,6 +295,11 @@ h3.title, .subtitle {
     background: #84cfd0ad;
     opacity: 1;
 }
+
+/*========================================
+ Attorney Section
+========================================*/
+
 .attorney-section {
     padding-bottom: 100px;
 }
@@ -334,6 +357,10 @@ h3.title, .subtitle {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+/*========================================
+ Form Section
+========================================*/
 .form-section {
     padding-bottom: 100px;
 }
@@ -418,6 +445,11 @@ h3.title, .subtitle {
         width: 75%;
     }
 }
+
+/*========================================
+ Testimonials Section
+========================================*/
+
 .testimonial-section {
     padding-bottom: 100px;
 }
