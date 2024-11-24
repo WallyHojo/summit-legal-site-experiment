@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Fetch the JSON data
-  fetch("data/case.json")
+  fetch("assets/data/case.json")
     .then((response) => response.json())
     .then((data) => {
       let html = "";
