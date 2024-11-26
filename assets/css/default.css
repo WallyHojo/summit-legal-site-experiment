@@ -1,7 +1,6 @@
 /*========================================
  General
 ========================================*/
-
 :root {
     --button-default: #816cff;
     --button-hover: #84cfd0;
@@ -22,7 +21,7 @@
 html, body {
     height: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0 !important;
 }
 body {
     font-family: "Outfit", sans-serif;
@@ -47,11 +46,96 @@ body {
     display: block;
     clear: both;
 }
-
+/*========================================
+ Header
+========================================*/
+#header {
+    background-color: transparent;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+.header-bg {
+    position: relative;
+    background-color: #816cffc2 !important;
+}
+.header-bg::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
+.header-scroll-down {
+    transform: translateY(-100%);
+}
+.header-scroll-up {
+    transform: translateY(0);
+}
+.logo {
+    color: var(--white);
+}
+.logo .name {
+    font-size: 22.08294105529785px;
+    letter-spacing: 0.09em;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.tagline {
+    font-size: 14.052780151367188px;
+    letter-spacing: 2.65px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.navbar-toggler .navbar-toggler-icon {
+    width: 1.75em;
+    height: 1.75em;
+    filter: invert(1);
+}
+.nav .nav-link {
+    padding: 0;
+    line-height: 44px;
+    color: var(--white);
+}
+.nav .nav-link:hover {
+    color: var(--turquoise);
+}
+.header-bg .nav .button {
+    background-color: var(--white);
+}
+/* Media Queries */
+@media screen and (max-width: 991px) {
+    .offcanvas {
+        background-color: #816cffc2;
+        backdrop-filter: blur(10px);
+        /* Blurring effect */
+    }
+    .offcanvas-header {
+        background-color: #816cffc2;
+    }
+    .nav > .nav-item:not(:last-child) {
+        border-bottom: solid 1px #816cffc2;
+    }
+}
+@media screen and (min-width: 992px) {
+    .nav .nav-item {
+        text-align: center;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .nav {
+        max-width: 90%;
+    }
+}
 /*========================================
  Content
 ========================================*/
-
 a {
     text-decoration: none;
 }
@@ -85,23 +169,22 @@ h3 {
 .container {
     position: relative;
 }
-.welcome-bg {
-    position: absolute;
-    bottom: 0;
+.name {
+    font-size: 20px;
 }
 .heading :is(.title, .subtitle), .title {
     margin-bottom: 0;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 120%;
 }
 h1.title, .h1.title {
-    font-size: 48px;
+    font-size: clamp(30px, 8vw, 48px);
 }
 h2.title {
-    font-size: 32px;
+    font-size: clamp(22px, 8vw, 32px);
 }
 h3.title, .subtitle {
-    font-size: 20px;
+    font-size: clamp(16px, 8vw, 20px);
 }
 .button {
     background: var(--button-default);
@@ -125,11 +208,39 @@ h3.title, .subtitle {
 .button-text.larger {
     font-size: 20px;
 }
-
+/*========================================
+ Welcome Section
+========================================*/
+.welcome-bg {
+    background-color: var(--dark);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+}
+.welcome-bg img {
+    position: absolute;
+    top: 50%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    opacity: 0.25;
+    transform: translateY(-50%);
+}
+.welcome-text .title span {
+    white-space: nowrap;
+}
+/* Media Queries */
+@media screen and (min-width: 992px) {
+    .welcome-text {
+        width: 50%;
+    }
+}
 /*========================================
  Services Section
 ========================================*/
-
 .service-section {
     padding-bottom: 100px;
 }
@@ -159,7 +270,6 @@ h3.title, .subtitle {
     flex-basis: 75%;
 }
 .service-boxes {
-    grid-template-columns: 1fr 1fr 1fr;
     margin-top: auto;
     flex-grow: 1;
     flex-basis: 75%;
@@ -205,7 +315,6 @@ h3.title, .subtitle {
     flex-shrink: 0;
     width: 40px;
     height: 40px;
-    position: absolute;
     left: calc(50% - 20px);
     bottom: -80px;
     transform-origin: 0 0;
@@ -215,19 +324,27 @@ h3.title, .subtitle {
     bottom: calc(40px / -2);
     opacity: 1;
 }
-
+.service-button-default img {
+    width: 14px;
+    filter: invert(1);
+}
+@media screen and (min-width: 768px) {
+    .service-boxes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 /*========================================
  About Section
 ========================================*/
-
 .about-section {
     padding-bottom: 100px;
 }
 .about-content {
-    padding: clamp(30px, 10vw, 60px);
+    padding: clamp(15px, 4vw, 60px);
 }
 .about-tabs ul button {
     background: var(--light-gray) !important;
+    font-weight: 500;
     color: var(--dark) !important;
     border-radius: 6px 6px 0px 0px !important;
 }
@@ -244,8 +361,7 @@ h3.title, .subtitle {
 .ribbon {
     width: 277px;
     height: 60px;
-    position: absolute;
-    left: 0px;
+    left: 0;
     bottom: 30px;
 }
 .ribbon-text {
@@ -270,16 +386,35 @@ h3.title, .subtitle {
     left: 0px;
     top: 0px;
 }
-
+/* Media Queries */
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+    .about-image {
+        transform: translateY(10%);
+    }
+}
+@media screen and (max-width: 1199px) {
+    .about-image img {
+        object-fit: cover;
+        height: 100%;
+    }
+}
+@media screen and (max-width: 991px) {
+    .about-image {
+        max-height: 400px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .ribbon {
+        position: absolute;
+        left: initial;
+        right: -277px;
+    }
+}
 /*========================================
  Case Section
 ========================================*/
-
 .case-section {
     padding-bottom: 100px;
-}
-.card-img img {
-    
 }
 .card-img-overlay {
     background-color: transparent;
@@ -295,11 +430,9 @@ h3.title, .subtitle {
     background: #84cfd0ad;
     opacity: 1;
 }
-
 /*========================================
  Attorney Section
 ========================================*/
-
 .attorney-section {
     padding-bottom: 100px;
 }
@@ -311,10 +444,9 @@ h3.title, .subtitle {
     width: 100%;
     height: 300px;
     transform-style: preserve-3d;
-    transform: rotateY(0);
     transition: transform 0.6s;
 }
-.card-flip:hover {
+.card-flip.is-flipped {
     transform: rotateY(180deg);
 }
 .card-front,
@@ -342,6 +474,40 @@ h3.title, .subtitle {
     width: 50px;
     height: 50px;
 }
+.staff-name {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+}
+.staff-title {
+    font-weight: 400;
+}
+:is(.card-front,.card-back) :is(.btn-close,.btn-open) {
+    right: -5px;
+    bottom: -5px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 6px 3px 0 3px;
+    opacity: 1;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+:is(.card-front,.card-back):hover :is(.btn-close,.btn-open) {
+    width: 60px;
+    height: 60px;
+}
+.btn-open {
+    background-color: var(--dark) !important;
+}
+.btn-open img {
+    filter: invert(1);
+}
+.btn-close {
+    background-color: var(--turquoise) !important;
+    font-size: 12px;
+}
+/* Media Queries */
+
 @media screen and (max-width: 480px) {
     .card-container {
         perspective: 800px;
@@ -357,7 +523,6 @@ h3.title, .subtitle {
         grid-template-columns: repeat(4, 1fr);
     }
 }
-
 /*========================================
  Form Section
 ========================================*/
@@ -435,6 +600,7 @@ h3.title, .subtitle {
 :is(input, textarea):is(:focus, :active) ~ label span, :is(input, textarea):not(:placeholder-shown) ~ label span {
     background-color: var(--dark);
 }
+/* Media Queries */
 @media screen and (min-width: 992px) {
     .form-section {
         grid-template-columns: repeat(2, 1fr);
@@ -445,18 +611,16 @@ h3.title, .subtitle {
         width: 75%;
     }
 }
-
 /*========================================
  Testimonials Section
 ========================================*/
-
 .testimonial-section {
     padding-bottom: 100px;
 }
 .testimonial {
     background-color: var(--white);
     /*width: 350px;*/
-    height: 300px;
+    height: 100%;
     border-style: solid;
     border-color: rgba(128, 128, 128, 0.05);
     border-width: 1px;
@@ -464,4 +628,199 @@ h3.title, .subtitle {
 }
 .testimonial-item {
     background-color: var(--white);
+}
+.reviewer-name {
+    font-size: 20px;
+    line-height: 1.2;
+}
+/*========================================
+ Blog Section
+========================================*/
+.blog-section {
+    background-color: #F2F2F2;
+    padding: 100px 0;
+}
+.slanted-vector {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.scroll-top {
+    max-width: 100%;
+    overscroll-behavior-x: contain;    
+}
+.blog-container, .blogs {
+    transform: rotateX(180deg);
+}
+.blog-container {
+    max-width: 100%;
+    overscroll-behavior-x: contain;
+    --size: clamp(12rem, 1rem + 50vw, 25.5rem);
+    --gutter: 2rem;
+    --gap: 0.5rem;
+    scroll-snap-type: x mandatory;
+    padding-block: var(--gutter);
+    grid-template-columns: [full-start] 1fr [content-start] min(var(--size), 100% - var(--gutter) * 2) [content-end] 1fr [full-end];
+}
+.blog-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background-color: var(--white);
+}
+.blog-container::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F2F2F2;
+}
+.blog-container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .25);
+    background-color: var(--turquoise);
+}
+.blogs {
+    grid-area: content;
+    /* Ensures the children are in a row */
+    gap: var(--gap);
+}
+.blogs::after {
+    content: "";
+    padding-inline-end: max(var(--gutter), (100vw - var(--size)) / 2 - var(--gutter));
+}
+.blogs > * {
+    background: var(--white);
+    min-width: 375px;
+    /* Set minimum width to 350px */
+    scroll-snap-align: center;
+    border-radius: 0.5rem;
+    border-color: rgba(128, 128, 128, 0.05) !important;
+    box-shadow: 0px 15px 34px -8px rgba(0, 0, 0, 0.10);
+}
+.blog-title h4 {
+    font-weight: 400;
+}
+.blog-image {
+    object-fit: cover;
+}
+.date-container {
+    background-color: var(--purple);
+    left: 20px;
+    color: var(--white);
+}
+.day {
+    font-size: 36px;
+    line-height: 120%;
+    font-weight: 700;
+}
+.year-month {
+    font-size: 14px;
+    line-height: 120%;
+    font-weight: 400;
+}
+.carrot {
+    width: 20px;
+    height: 20px;
+}
+.blog-snippet p {
+    font-size: 16px;
+    color: var(--gray);
+}
+@supports (animation-timeline: view()) {
+    .blogs > * {
+        --scale: 0.9;
+        --offset: var(--gap);
+        animation: scale linear both, fade linear both;
+        animation-timeline: view(inline);
+        animation-range: cover 30% cover 70%, cover 5% cover 95%;
+    }
+    @keyframes scale {
+        from,
+        to {
+            scale: var(--scale);
+        }
+        50% {
+            scale: 1;
+        }
+        from {
+            translate: var(--offset) 0;
+        }
+        to {
+            translate: calc(var(--offset) * -1) 0;
+        }
+    }
+    @keyframes fade {
+        from,
+        to {
+            opacity: 0;
+        }
+        10%,
+        90% {
+            opacity: 1;
+        }
+    }
+}
+/*========================================
+ Footer
+========================================*/
+#footer {
+    background-color: var(--dark);
+    padding: 100px 0;
+    color: var(--white);
+}
+.footer .title {
+    font-weight: 400;
+}
+.footer a {
+    color: var(--white);
+    transition: color 0.3s ease-out;
+}
+.footer a:hover {
+    color: var(--turquoise);
+}
+.socials > [class*="social-"] {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+.socials .ellipse {
+    background-color: var(--turquoise);
+}
+.socials svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+/*========================================
+ Misc
+========================================*/
+/* Glide JS */
+.glide__slide {
+    height: auto !important;
+}
+.glide__arrow {
+    border: none !important;
+    box-shadow: none !important;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    /* Adjust as needed */
+    filter: brightness(0) saturate(100%) invert(88%) sepia(30%) saturate(469%) hue-rotate(124deg) brightness(86%) contrast(87%);
+}
+.glide__arrow--left {
+    background-image: url('../../assets/images/left-arrow_icon.svg');
+}
+.glide__arrow--right {
+    background-image: url('../../assets/images/right-arrow_icon.svg');
+}
+.glide__bullets {
+    bottom: -15px !important;
+}
+.glide__bullet {
+    background-color: var(--light-gray) !important;
+    width: 12px !important;
+    height: 12px !important;
+}
+.glide__bullet--active {
+    background-color: var(--turquoise) !important;
 }

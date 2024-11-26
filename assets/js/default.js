@@ -1,36 +1,80 @@
+document.addEventListener("DOMContentLoaded", () => {
+  let lastScrollTop = 0;
+  let timer;
+
+  const header = document.getElementById("header");
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    clearTimeout(timer);
+
+    if (scrollTop > lastScrollTop) {
+      // Scrolling down
+      header.classList.add("header-scroll-down");
+      header.classList.remove("header-scroll-up");
+    } else {
+      // Scrolling up
+      header.classList.remove("header-scroll-down");
+      header.classList.add("header-scroll-up");
+    }
+
+    // Add header-bg class when scrolling
+    header.classList.add("header-bg");
+
+    // Remove header-bg class when at the top of the page
+    if (scrollTop === 0) {
+      header.classList.remove("header-bg");
+    }
+
+    // Remove header-scroll-down class after scrolling stops
+    timer = setTimeout(() => {
+      header.classList.remove("header-scroll-down");
+      header.classList.remove("header-scroll-up");
+    }, 150); // Adjust timeout duration as needed
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+  });
+});
+
+/****/
+
 // Function to update the div height based on the screen height
 function updateDivHeight() {
-  // Get the height of the screen
-  const screenHeight = window.innerHeight;
-
-  // Get the div element by its ID
-  const divElement = document.getElementById("welcome-section");
-
-  // Apply the screen height to the div in pixels
-  divElement.style.height = screenHeight + "px";
+  const sectionHeight = window.innerHeight;
+  const welcomeSection = document.getElementById("welcome-section");
+  welcomeSection.style.height = `${sectionHeight}px`;
 }
 
 // Function to update the top margin of the section based on its height
 function updateTopMargin() {
-  // Get the section element by its ID
   const section = document.getElementById("service-section");
-
-  // Get the height of the section
   const sectionHeight = section.offsetHeight;
 
-  // Calculate the negative top margin (height divided by 2.5)
-  const negativeMargin = -(sectionHeight / 2.5);
-
-  // Apply the negative margin to the section
+  let negativeMargin;
+  if (window.innerWidth > 1024) {
+    negativeMargin = -(sectionHeight / 2.55);
+  } else if (window.innerWidth > 768 && window.innerWidth < 991) {
+    negativeMargin = -(sectionHeight / 5);
+  } else {
+    negativeMargin = -(sectionHeight / 10);
+  }
   section.style.marginTop = `${negativeMargin}px`;
 }
 
-// Call the function to set the initial height when the page loads
+// Call functions to set the initial height and margin when the page loads
 updateDivHeight();
 updateTopMargin();
 
-// Add an event listener to update the div height on window resize
-window.addEventListener("resize", updateDivHeight, updateTopMargin);
+// Add event listeners to update the div height and margin on window load and resize
+window.addEventListener("load", () => {
+  updateDivHeight();
+  updateTopMargin();
+});
+window.addEventListener("resize", () => {
+  updateDivHeight();
+  updateTopMargin();
+});
 
 /****/
 
@@ -80,5 +124,52 @@ function eraseWord() {
 
 // Start typing the first word
 typeWord();
+
+/****/
+
+function adjustHeights(selector) {
+  // Select all blog containers const
+  blogContainers = document.querySelectorAll(".blog-container");
+  blogContainers.forEach((container) => {
+    // Find all elements with the given selector within this container
+    const elements = container.querySelectorAll(selector);
+    // Reset height to auto to recalculate properly
+    elements.forEach((el) => {
+      el.style.height = "auto";
+    });
+    // Find the tallest element
+    let maxHeight = 0;
+    elements.forEach((el) => {
+      const height = el.offsetHeight;
+      if (height > maxHeight) {
+        maxHeight = height;
+      }
+    });
+    // Apply the tallest height to all elements
+    elements.forEach((el) => {
+      el.style.height = `${maxHeight}px`;
+    });
+  });
+}
+function adjustAllHeights() {
+  adjustHeights(".blog-title");
+  adjustHeights(".blog-snippet");
+}
+document.addEventListener("DOMContentLoaded", adjustAllHeights);
+window.addEventListener("resize", adjustAllHeights);
+
+/****/
+
+document.querySelectorAll(".card-flip").forEach((card) => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("is-flipped");
+  });
+});
+document.querySelectorAll(".close-button").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    button.closest(".card").classList.remove("is-flipped");
+  });
+});
 
 /****/

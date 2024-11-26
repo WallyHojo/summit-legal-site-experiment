@@ -15,10 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
           '<div class="testimonial d-flex flex-column justify-content-between rounded-2 p-3 gap-5 mx-auto overflow-hidden">';
         html += `<p>${item.review}</p>`;
         html +=
-          '<div class="staff d-flex flex-row align-items-center mt-auto">';
-        html += '<div class="name-container order-1">';
-        html += `<div class="name"> ${item.name} </div>`;
-        html += `<div class="title text-purple"> ${item.title} </div>`;
+          '<div class="reviewer d-flex flex-row align-items-center mt-auto">';
+        html += '<div class="order-1">';
+        html += `<div class="reviewer-name"> ${item.name} </div>`;
+        html += `<div class="reviewer-title text-purple"> ${item.title} </div>`;
         html += "</div>";
         html += '<div class="photo me-2">';
         html += `<img class="ellipse position-relative img-fluid" alt="${altNameLower} photo" src="${item.photo}">`;
@@ -34,15 +34,21 @@ document.addEventListener("DOMContentLoaded", () => {
         keyboard: true,
         gap: 20,
         breakpoints: {
-          1024: {
+          1200: {
             perView: 3,
           },
-          992: {
+          1024: {
             perView: 2,
           },
+          992: {
+            perView: 2.5,
+          },          
           768: {
-            perView: 1,
+            perView: 2,
           },
+          576: {
+            perView: 1,
+          },          
         },
       }).mount();
     })
