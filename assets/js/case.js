@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
             perView: 2,
           },
           768: {
+            perView: 1.5,
+          },
+          576: {
             perView: 1,
           },
         },
