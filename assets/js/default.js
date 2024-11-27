@@ -57,7 +57,7 @@ function updateTopMargin() {
   } else if (window.innerWidth > 768 && window.innerWidth < 991) {
     negativeMargin = -(sectionHeight / 5);
   } else {
-    negativeMargin = -(sectionHeight / 10);
+    negativeMargin = -(sectionHeight / 12);
   }
   section.style.marginTop = `${negativeMargin}px`;
 }
@@ -171,5 +171,3 @@ document.querySelectorAll(".close-button").forEach((button) => {
     button.closest(".card").classList.remove("is-flipped");
   });
 });
-
-/****/
