@@ -11,6 +11,7 @@
     --purple: #816cff;
     --gray: #808080;
     --light-gray: #d9d9d9;
+    --section-padding: 100px;
 }
 * {
     box-sizing: border-box;
@@ -219,7 +220,6 @@ h3.title, .subtitle {
     left: 0;
     width: 100%;
     height: 100%;
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
 }
 .welcome-bg img {
     position: absolute;
@@ -234,7 +234,15 @@ h3.title, .subtitle {
     white-space: nowrap;
 }
 /* Media Queries */
+@media screen and (max-width: 991px) {
+    .welcome-bg {
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%);
+    }      
+}
 @media screen and (min-width: 992px) {
+    .welcome-bg {
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    }    
     .welcome-text {
         width: 50%;
     }
@@ -261,7 +269,7 @@ h3.title, .subtitle {
  Services Section
 ========================================*/
 .service-section {
-    padding-bottom: 100px;
+    padding-bottom: var(--section-padding);
 }
 .service-heading {
     background: var(--turquoise);
@@ -356,22 +364,45 @@ h3.title, .subtitle {
  About Section
 ========================================*/
 .about-section {
-    padding-bottom: 100px;
+    padding-bottom: var(--section-padding);
 }
 .about-content {
     padding: clamp(15px, 4vw, 60px);
 }
-.about-tabs ul button {
-    background: var(--light-gray) !important;
-    font-weight: 500;
-    color: var(--dark) !important;
-    border-radius: 6px 6px 0px 0px !important;
+.about-tabs li button {
+    background-color: transparent;
+    color: var(--dark);    
+    border-radius: 0;
+    z-index: 1;
+    transition: all 0.3s ease 0s;
 }
-.about-tabs ul button:is(:hover, .active) {
-    background: var(--purple) !important;
+.about-tabs li button:is(.active,:hover) {
+    background-color: transparent;
+    color: var(--dark);
+}
+.about-tabs li button::before {
+    content: '';
+    background: linear-gradient(transparent,var(--purple));
+    position: absolute;
+    top: 0;
+    left: 0;    
+    height: 100%;
+    width: 100%;
+    transform-origin: bottom center;
+    transform: perspective(500px) rotateX(75deg);
+    z-index: -1;
+    transition: all 0.5s ease 0s;
+}
+.about-tabs li button.active::before {
+    background: linear-gradient(var(--turquoise),var(--purple));
+    border-radius: 6px 6px 0 0;
+    transform: perspective(500px) rotateX(0deg);
+}
+.about-tabs li button:not(.active):hover::before {
+    border-radius: 6px 6px 0 0;    
+    transform: perspective(500px) rotateX(25deg);
 }
 .tab-about-content {
-    border-radius: 0 0 6px 6px;
     overflow: hidden;
 }
 .tab-about-content .tab-pane.active {
@@ -422,6 +453,29 @@ h3.title, .subtitle {
         max-height: 400px;
     }
 }
+@media screen and (max-width: 575px) {
+    .about-tabs .nav-tabs {
+        background-color: var(--purple);
+        border-radius: 6px 6px 0 0;
+    }
+    .about-tabs .nav-tabs button::after {
+        content: '';
+        background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(181,226,227,1) 30%,rgba(132,207,208,1) 50%,rgba(181,226,227,1) 70%,rgba(255,255,255,0) 100%);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+    }
+    .tab-about-content {
+        border-radius: 0 0 6px 6px;
+    }       
+}
+@media screen and (min-width: 576px) {
+    .tab-about-content {
+        border-radius: 0 6px 6px 6px;
+    }    
+}
 @media screen and (min-width: 1200px) {
     .ribbon {
         position: absolute;
@@ -433,7 +487,7 @@ h3.title, .subtitle {
  Case Section
 ========================================*/
 .case-section {
-    padding-bottom: 100px;
+    padding-bottom: var(--section-padding);
 }
 .card-img-overlay {
     background-color: transparent;
@@ -453,7 +507,7 @@ h3.title, .subtitle {
  Attorney Section
 ========================================*/
 .attorney-section {
-    padding-bottom: 100px;
+    padding-bottom: var(--section-padding);
 }
 .card-container {
     perspective: 1000px;
@@ -545,7 +599,7 @@ h3.title, .subtitle {
  Form Section
 ========================================*/
 .form-section {
-    padding-bottom: 100px;
+    padding-bottom: var(--section-padding);
 }
 .form-img img {
     max-height: 625px;
@@ -666,7 +720,7 @@ h3.title, .subtitle {
 ========================================*/
 .blog-section {
     background-color: #F2F2F2;
-    padding: 100px 0;
+    padding: var(--section-padding) 0;
 }
 .slanted-vector {
     position: absolute;
@@ -790,7 +844,7 @@ h3.title, .subtitle {
 ========================================*/
 #footer {
     background-color: var(--dark);
-    padding: 100px 0;
+    padding: var(--section-padding) 0;
     color: var(--white);
 }
 .footer .title {
