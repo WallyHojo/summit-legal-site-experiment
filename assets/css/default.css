@@ -367,9 +367,6 @@ h3.title, .subtitle {
 .about-section {
     padding-bottom: var(--section-padding);
 }
-.about-content {
-    padding: clamp(15px, 4vw, 60px);
-}
 .about-tabs li button {
     background-color: transparent;
     color: var(--dark);    
@@ -462,10 +459,15 @@ h3.title, .subtitle {
         border-radius: 0 0 6px 6px;
     }       
 }
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 576px) {  
     .tab-about-content {
         border-radius: 0 6px 6px 6px;
     }    
+}
+@media screen and (min-width: 991px) {
+    .about-content {
+        padding: clamp(15px, 4vw, 60px);
+    }      
 }
 @media screen and (min-width: 1400px) {
     .ribbon {
