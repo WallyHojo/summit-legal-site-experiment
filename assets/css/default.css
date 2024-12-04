@@ -716,6 +716,9 @@ h3.title, .subtitle {
 .testimonials .glide__arrows {
     width: 33.3333%;
 }
+.testimonials .glide__arrow {
+    transform: initial !important;
+}
 .testimonials .glide__arrow--left {
     left: 0;
 }
@@ -887,7 +890,6 @@ h3.title, .subtitle {
     padding: 0 !important;
     /* Adjust as needed */
     filter: brightness(0) saturate(100%) invert(88%) sepia(30%) saturate(469%) hue-rotate(124deg) brightness(86%) contrast(87%);
-    transform: initial !important;
 }
 .glide__arrow--left {
     background-image: url('../../assets/images/left-arrow_icon.svg');
