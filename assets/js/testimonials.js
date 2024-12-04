@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         html += '<li class="glide__slide">';
         html +=
           '<div class="testimonial d-flex flex-column justify-content-between rounded-2 p-3 gap-5 mx-auto overflow-hidden">';
-        html += `<p>${item.review}</p>`;
+        html += `<p class="text-gray">${item.review}</p>`;
         html +=
           '<div class="reviewer d-flex flex-row align-items-center mt-auto">';
         html += '<div class="order-1">';

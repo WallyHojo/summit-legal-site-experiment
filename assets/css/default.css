@@ -8,7 +8,7 @@
     --white: #fff;
     --turquoise: #84cfd0;
     --dark: #000235;
-    --purple: #816cff;
+    --purple: #9747FF;
     --gray: #808080;
     --light-gray: #d9d9d9;
 
@@ -213,6 +213,12 @@ h3.title, .subtitle {
 .button-text.larger {
     font-size: 20px;
 }
+/* Media Queries */
+@media screen and (min-width: 768px) {
+    .narrow {
+        max-width: 500px;
+    }
+}
 /*========================================
  Welcome Section
 ========================================*/
@@ -338,7 +344,7 @@ h3.title, .subtitle {
     overflow: visible;
 }
 .service-button-default {
-    background: var(--purple);
+    background: var(--button-default);
     border-radius: 20px;
     opacity: 0;
     padding: 12.63px;
@@ -382,7 +388,7 @@ h3.title, .subtitle {
 }
 .about-tabs li button::before {
     content: '';
-    background: linear-gradient(transparent,var(--purple));
+    background: linear-gradient(transparent,var(--button-default));
     position: absolute;
     top: 0;
     left: 0;    
@@ -406,7 +412,7 @@ h3.title, .subtitle {
     overflow: hidden;
 }
 .tab-about-content .tab-pane.active {
-    background: var(--purple) !important;
+    background: var(--button-default) !important;
 }
 .ribbon {
     width: 277px;
@@ -777,7 +783,7 @@ h3.title, .subtitle {
     object-fit: cover;
 }
 .date-container {
-    background-color: var(--purple);
+    background-color: var(--button-default);
     left: 20px;
     color: var(--white);
 }
