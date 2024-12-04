@@ -31,11 +31,37 @@ document.addEventListener("DOMContentLoaded", () => {
     timer = setTimeout(() => {
       header.classList.remove("header-scroll-down");
       header.classList.remove("header-scroll-up");
-    }, 150); // Adjust timeout duration as needed
+    }, 300); // Adjust timeout duration as needed
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
   });
 });
+
+/****/
+
+// Get the scroll-to-top button
+const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+// Function to handle the scroll event
+window.onscroll = function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        // Show the button when scrolling down 300px
+        scrollToTopBtn.style.opacity = "1";
+        scrollToTopBtn.style.visibility = "visible"; // Enable interaction
+    } else {
+        // Hide the button when less than 300px scrolled
+        scrollToTopBtn.style.opacity = "0";
+        scrollToTopBtn.style.visibility = "hidden"; // Disable interaction
+    }
+};
+
+// Function to scroll to the top
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" // Optional smooth scroll effect
+    });
+}
 
 /****/
 

@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
       data.forEach((item) => {
 
         html += '<li class="glide__slide">';
-        html += '<div class="card border-0 rounded-2 overflow-hidden">';
+        html += '<div class="card border-0 rounded-0 overflow-hidden">';
         html += '<div class="card-img">';
         html += `<img src="${item.image}" class="img-fluid w-100">`;
         html += '</div>';
-        html += '<div class="card-img-overlay d-flex flex-column align-items-center justify-content-center gap-1">';
+        html += '<div class="card-img-overlay d-flex flex-column align-items-center justify-content-center gap-1 rounded-0">';
         html += `<h4 class="mb-0">${item.title}</h4>`;
         html += `<h6 class="mb-0">${item.subtitle}</h6>`;
         html += `</div></div>`;
