@@ -6,10 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const scrollUp = 'header-scroll-up';
   const scrollDown = 'header-scroll-down';
 
-  // Initially remove 'header-bg' if exists.
-  // Initiated for click event on logo.
-  header.classList.remove("header-bg");    
-
   window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
@@ -40,15 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300); // Adjust timeout duration as needed
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-  });
-
-  // Add a click event listener to the div with the class 'logo'.
-  // When the div is clicked, the user will be redirected to the specified URL.
-  document.querySelectorAll(".logo").forEach((logo) => {
-    logo.addEventListener("click", () => {
-      window.location.href = '/';
-    });
-  });  
+  }); 
 });
 
 /****/
@@ -146,7 +134,7 @@ const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
 // Function to handle the scroll event
 window.onscroll = function() {
-    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         // Show the button when scrolling down 300px
         scrollToTopBtn.style.opacity = "1";
         scrollToTopBtn.style.visibility = "visible"; // Enable interaction

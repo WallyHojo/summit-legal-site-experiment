@@ -54,7 +54,6 @@ body {
  Header
 ========================================*/
 #header {
-    background-color: transparent;
     position: fixed;
     width: 100%;
     top: 0;
@@ -64,7 +63,7 @@ body {
 }
 .header-bg {
     position: relative;
-    background-color: #816cffc2 !important;
+    background-color: #816cffc2;
 }
 .header-bg::after {
     content: '';
@@ -923,6 +922,8 @@ h3.title, .subtitle {
     cursor: pointer;
     transition: background 0.5s ease-out, opacity 0.3s ease-in, visibility 0.3s ease-out;
     backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
 }
 #scrollToTopBtn:hover {
     background-color: var(--purple);
