@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let timer;
 
   const header = document.getElementById("header");
+  const scrollUp = 'header-scroll-up';
+  const scrollDown = 'header-scroll-down';
 
   window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -11,12 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (scrollTop > lastScrollTop) {
       // Scrolling down
-      header.classList.add("header-scroll-down");
-      header.classList.remove("header-scroll-up");
+      header.classList.add(scrollDown);
+      header.classList.remove(scrollUp);
     } else {
       // Scrolling up
-      header.classList.remove("header-scroll-down");
-      header.classList.add("header-scroll-up");
+      header.classList.remove(scrollDown);
+      header.classList.add(scrollUp);
     }
 
     // Add header-bg class when scrolling
@@ -29,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Remove header-scroll-down class after scrolling stops
     timer = setTimeout(() => {
-      header.classList.remove("header-scroll-down");
-      header.classList.remove("header-scroll-up");
+      //header.classList.remove(scrollDown);
+      header.classList.remove(scrollUp);
     }, 300); // Adjust timeout duration as needed
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
@@ -44,7 +46,7 @@ const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
 // Function to handle the scroll event
 window.onscroll = function() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
         // Show the button when scrolling down 300px
         scrollToTopBtn.style.opacity = "1";
         scrollToTopBtn.style.visibility = "visible"; // Enable interaction
@@ -105,7 +107,7 @@ window.addEventListener("resize", () => {
 /****/
 
 // Array of words to type out
-const words = ["Justice", "Freedom", "Dignity"];
+const words = ["Justice.", "Freedom.", "Dignity."];
 let currentWordIndex = 0;
 let currentCharIndex = 0;
 const typingSpeed = 150; // Speed of typing (in milliseconds)
