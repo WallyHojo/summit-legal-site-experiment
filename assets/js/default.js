@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const scrollUp = 'header-scroll-up';
   const scrollDown = 'header-scroll-down';
 
+  // Initially remove 'header-bg' if exists.
+  // Initiated for click event on logo.
+  header.classList.remove("header-bg");    
+
   window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
@@ -37,33 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
   });
-});
 
-/****/
-
-// Get the scroll-to-top button
-const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-
-// Function to handle the scroll event
-window.onscroll = function() {
-    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
-        // Show the button when scrolling down 300px
-        scrollToTopBtn.style.opacity = "1";
-        scrollToTopBtn.style.visibility = "visible"; // Enable interaction
-    } else {
-        // Hide the button when less than 300px scrolled
-        scrollToTopBtn.style.opacity = "0";
-        scrollToTopBtn.style.visibility = "hidden"; // Disable interaction
-    }
-};
-
-// Function to scroll to the top
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth" // Optional smooth scroll effect
+  // Add a click event listener to the div with the class 'logo'.
+  // When the div is clicked, the user will be redirected to the specified URL.
+  document.querySelectorAll(".logo").forEach((logo) => {
+    logo.addEventListener("click", () => {
+      window.location.href = '/';
     });
-}
+  });  
+});
 
 /****/
 
@@ -152,6 +138,32 @@ function eraseWord() {
 
 // Start typing the first word
 typeWord();
+
+/****/
+
+// Get the scroll-to-top button
+const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+// Function to handle the scroll event
+window.onscroll = function() {
+    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+        // Show the button when scrolling down 300px
+        scrollToTopBtn.style.opacity = "1";
+        scrollToTopBtn.style.visibility = "visible"; // Enable interaction
+    } else {
+        // Hide the button when less than 300px scrolled
+        scrollToTopBtn.style.opacity = "0";
+        scrollToTopBtn.style.visibility = "hidden"; // Disable interaction
+    }
+};
+
+// Function to scroll to the top
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" // Optional smooth scroll effect
+    });
+}
 
 /****/
 

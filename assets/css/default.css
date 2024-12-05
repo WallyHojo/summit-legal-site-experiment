@@ -84,6 +84,7 @@ body {
 }
 .logo {
     color: var(--white);
+    cursor: pointer;
 }
 .logo .name {
     font-size: 22.08294105529785px;
