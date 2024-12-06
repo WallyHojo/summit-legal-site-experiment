@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const scrollUp = 'header-scroll-up';
   const scrollDown = 'header-scroll-down';
 
+  // Initially remove 'header-bg' if exists.
+  // Initiated for click event on logo.
+  header.classList.remove("header-bg"); 
+
   window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
