@@ -912,6 +912,7 @@ h3.title, .subtitle {
 /* Style for the scroll to top icon/button */
 #scrollToTopBtn {
     position: fixed;
+    z-index: 99;
     bottom: 20px;
     right: 20px;
     background-color: #816cffc2;
