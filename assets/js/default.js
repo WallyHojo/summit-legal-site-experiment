@@ -45,7 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
 function updateDivHeight() {
   const sectionHeight = window.innerHeight;
   const welcomeSection = document.getElementById("welcome-section");
-  welcomeSection.style.height = `${sectionHeight}px`;
+
+  let welcomeHeight;
+  if (window.innerWidth >= 1440 && window.innerHeight <= 900) { // Most laptops
+    welcomeHeight = (sectionHeight + 150);
+  } else {
+    welcomeHeight = (sectionHeight);
+  }
+  welcomeSection.style.height = `${welcomeHeight}px`;
 }
 
 // Function to update the top margin of the section based on its height
