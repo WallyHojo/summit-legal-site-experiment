@@ -14,7 +14,7 @@
 
     --section-padding: clamp(60px, 12vw, 100px);
 
-    /*--gap: 20px;*/
+    --gap: 10px;
 }
 * {
     box-sizing: border-box;
@@ -519,6 +519,7 @@ h3.title, .subtitle {
     height: 300px;
     transform-style: preserve-3d;
     transition: transform 0.6s;
+    backface-visibility: hidden;
 }
 .card-flip.is-flipped {
     transform: rotateY(180deg);
@@ -740,9 +741,9 @@ h3.title, .subtitle {
     transform: translateX(-50%);
 }
 .blog-container {
-    max-width: 100%;
+    /*max-width: 100%;*/
     overscroll-behavior-x: contain;
-    --size: clamp(12rem, 1rem + 50vw, 22.55rem);
+    --size: clamp(12rem, 1rem + 50vw, 20.55rem);
     --gutter: 2rem;
     scroll-snap-type: x mandatory;
     padding-block: var(--gutter) 15px;
@@ -812,13 +813,18 @@ h3.title, .subtitle {
     .blogs > * {
         --scale: 0.9;
         /*--offset: var(--gap);*/
+        -webkit-animation: scale linear both, fade linear both;
         animation: scale linear both, fade linear both;
         animation-timeline: view(inline);
         animation-range: cover 30% cover 70%, cover 5% cover 95%;
     }
-    @keyframes scale {
-        from,
-        to {
+    @-moz-document url-prefix() {
+        .blogs > * {
+            --offset: var(--gap);
+        }
+      }    
+    @-webkit-keyframes scale {
+        from, to {
             scale: var(--scale);
         }
         50% {
@@ -831,13 +837,33 @@ h3.title, .subtitle {
             translate: calc(var(--offset) * -1) 0;
         }
     }
-    @keyframes fade {
-        from,
+    @keyframes scale {
+        from, to {
+            scale: var(--scale);
+        }
+        50% {
+            scale: 1;
+        }
+        from {
+            translate: var(--offset) 0;
+        }
         to {
+            translate: calc(var(--offset) * -1) 0;
+        }
+    }
+    @-webkit-keyframes fade {
+        from, to {
             opacity: 0;
         }
-        10%,
-        90% {
+        10%, 90% {
+            opacity: 1;
+        }
+    }
+    @keyframes fade {
+        from, to {
+            opacity: 0;
+        }
+        10%, 90% {
             opacity: 1;
         }
     }
