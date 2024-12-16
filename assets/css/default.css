@@ -14,7 +14,7 @@
 
     --section-padding: clamp(60px, 12vw, 100px);
 
-    --gap: 10px;
+    --gap: 20px;
 }
 * {
     box-sizing: border-box;
@@ -816,47 +816,14 @@ h3.title, .subtitle {
         -webkit-animation: scale linear both, fade linear both;
         animation: scale linear both, fade linear both;
         animation-timeline: view(inline);
-        animation-range: cover 30% cover 70%, cover 5% cover 95%;
-    }
-    @-moz-document url-prefix() {
-        .blogs > * {
-            --offset: var(--gap);
-        }
-      }    
-    @-webkit-keyframes scale {
-        from, to {
-            scale: var(--scale);
-        }
-        50% {
-            scale: 1;
-        }
-        from {
-            translate: var(--offset) 0;
-        }
-        to {
-            translate: calc(var(--offset) * -1) 0;
-        }
-    }
+        animation-range: 30% 70%, 5% 95%;
+    } 
     @keyframes scale {
         from, to {
             scale: var(--scale);
         }
         50% {
             scale: 1;
-        }
-        from {
-            translate: var(--offset) 0;
-        }
-        to {
-            translate: calc(var(--offset) * -1) 0;
-        }
-    }
-    @-webkit-keyframes fade {
-        from, to {
-            opacity: 0;
-        }
-        10%, 90% {
-            opacity: 1;
         }
     }
     @keyframes fade {
@@ -866,6 +833,11 @@ h3.title, .subtitle {
         10%, 90% {
             opacity: 1;
         }
+    }
+}
+@-moz-document url-prefix() {
+    .blogs {
+      gap: var(--gap);
     }
 }
 /*========================================
