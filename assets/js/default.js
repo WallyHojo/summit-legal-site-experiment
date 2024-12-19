@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let timer;
 
   const header = document.getElementById("header");
-  const scrollUp = 'header-scroll-up';
-  const scrollDown = 'header-scroll-down';
+  const scrollUp = "header-scroll-up";
+  const scrollDown = "header-scroll-down";
 
   window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -15,10 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
       // Scrolling down
       header.classList.add(scrollDown);
       header.classList.remove(scrollUp);
+
+      // Remove 'show' class from elements if scrolling down
+      document.querySelectorAll(".show").forEach((element) => {
+        element.classList.remove("show");
+      });
     } else {
       // Scrolling up
       header.classList.remove(scrollDown);
-      header.classList.add(scrollUp);
+      header.classList.add(scrollUp);     
     }
 
     // Add header-bg class when scrolling
@@ -36,7 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300); // Adjust timeout duration as needed
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-  }); 
+  });
+});
+
+/****/
+
+// Prevent dropdown-menu from closing if clicked
+document.querySelectorAll('.menu-full .dropdown-menu').forEach((dropdownMenu) => {
+  dropdownMenu.addEventListener('click', function (e) {
+    if (!e.target.classList.contains('dropdown-item')) { 
+      e.stopPropagation(); 
+    }
+  });
 });
 
 /****/
@@ -47,10 +63,11 @@ function updateDivHeight() {
   const welcomeSection = document.getElementById("welcome-section");
 
   let welcomeHeight;
-  if (window.innerWidth >= 1440 && window.innerHeight <= 900) { // Most laptops
-    welcomeHeight = (sectionHeight + 150);
+  if (window.innerWidth >= 1440 && window.innerHeight <= 900) {
+    // Most laptops
+    welcomeHeight = sectionHeight + 150;
   } else {
-    welcomeHeight = (sectionHeight);
+    welcomeHeight = sectionHeight;
   }
   welcomeSection.style.height = `${welcomeHeight}px`;
 }
@@ -137,27 +154,30 @@ typeWord();
 /****/
 
 // Get the scroll-to-top button
-const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
 // Function to handle the scroll event
-window.onscroll = function() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        // Show the button when scrolling down 300px
-        scrollToTopBtn.style.opacity = "1";
-        scrollToTopBtn.style.visibility = "visible"; // Enable interaction
-    } else {
-        // Hide the button when less than 300px scrolled
-        scrollToTopBtn.style.opacity = "0";
-        scrollToTopBtn.style.visibility = "hidden"; // Disable interaction
-    }
+window.onscroll = function () {
+  if (
+    document.body.scrollTop > 300 ||
+    document.documentElement.scrollTop > 300
+  ) {
+    // Show the button when scrolling down 300px
+    scrollToTopBtn.style.opacity = "1";
+    scrollToTopBtn.style.visibility = "visible"; // Enable interaction
+  } else {
+    // Hide the button when less than 300px scrolled
+    scrollToTopBtn.style.opacity = "0";
+    scrollToTopBtn.style.visibility = "hidden"; // Disable interaction
+  }
 };
 
 // Function to scroll to the top
 function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth" // Optional smooth scroll effect
-    });
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Optional smooth scroll effect
+  });
 }
 
 /****/
